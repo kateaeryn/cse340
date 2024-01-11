@@ -1,8 +1,12 @@
+:root{
+ --main-color: #77cbb9;
+}
 
   body{
     background-image: none;
     margin: auto;
     width: 100%;
+    font-family: 'Roboto', sans-serif;
   }
   
     #wrapper {
@@ -53,7 +57,7 @@
       line-height: .2em;
       margin-top: 2em;
       margin-left: 0;
-      color: cyan;
+      color: var(--main-color);
       opacity: 0.9;
       width: 30%;
       z-index: 2;
@@ -62,7 +66,7 @@
     }
   
     #own-today {
-      background-color: cyan;
+      background-color: var(--main-color);
       padding: 1em;
       width: 80%;
       font-weight: bold;
@@ -104,28 +108,28 @@
     #flux {
       grid-column: 1/2;
       grid-row: 2/2;
-      background-color: cyan;
+      background-color: var(--main-color);
       padding: 1em 3em;
     }
   
     #flame {
       grid-column: 2/3;
       grid-row: 2/2;
-      background-color: cyan;
+      background-color: var(--main-color);
       padding: 1em 3em;
     }
   
     #bumper {
       grid-column: 1/2;
       grid-row: 4/4;
-      background-color: cyan;
+      background-color: var(--main-color);
       padding: 1em 3em;
     }
   
     #hub {
       grid-column: 2/3;
       grid-row: 4/4;
-      background-color: cyan;
+      background-color: var(--main-color);
       padding: 1em 3em;
     }
   
@@ -167,7 +171,7 @@
 
   #wrapper {
     background-color: white;
-    border: solid 3px cyan;
+    border: solid 3px var(--main-color);
     border-radius: 5px;
     max-width: 1080px;
     margin: 1em auto auto auto;
@@ -240,7 +244,7 @@
     line-height: .5em;
     margin-left: 5em;
     margin-top: 2em;
-    color: cyan;
+    color: var(--main-color);
     opacity: 0.9;
     width: 19%;
     z-index: 2;
@@ -249,7 +253,7 @@
   }
 
   #own-today {
-    background-color: cyan;
+    background-color: var(--main-color);
     padding: .5em;
     width: 90%;
     font-weight: bold;
@@ -290,28 +294,28 @@
   #flux {
     grid-column: 1/2;
     grid-row: 2/2;
-    background-color: cyan;
+    background-color: var(--main-color);
     padding: 1em 4em;
   }
 
   #flame {
     grid-column: 2/3;
     grid-row: 2/2;
-    background-color: cyan;
+    background-color: var(--main-color);
     padding: 1em 4em;
   }
 
   #bumper {
     grid-column: 1/2;
     grid-row: 4/4;
-    background-color: cyan;
+    background-color: var(--main-color);
     padding: 1em 4em;
   }
 
   #hub {
     grid-column: 2/3;
     grid-row: 4/4;
-    background-color: cyan;
+    background-color: var(--main-color);
     padding: 1em 4em;
   }
 
