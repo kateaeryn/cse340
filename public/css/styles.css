@@ -162,11 +162,13 @@
       margin-top: 5em;
     }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
 
   body {
-    background-image: url(/images/site/small_check.jpg);
-    margin: 0;
+    background-image: url(/images/site/small_check_test.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
   }
 
   #wrapper {
