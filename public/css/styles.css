@@ -26,11 +26,13 @@
       justify-content: space-between;
       list-style-type: none;
       background-color: black;
-      color: white;
       padding: 0;
       width: 100%;
     }
-  
+    nav a{
+      text-decoration: none;
+      color: white;
+    }
     nav li {
       margin: auto;
       font-size: large;
