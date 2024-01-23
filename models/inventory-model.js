@@ -1,4 +1,5 @@
 const pool = require("../database/")
+const utilities = require("../utilities")
 
 /* ***************************
  *  Get all classification data
@@ -37,5 +38,6 @@ async function getDetailByInventoryId(inventory_id) {
     console.error("getdetailbyinventoryid error" + error)
   }
 }
+
 
 module.exports = { getClassifications, getInventoryByClassificationId, getDetailByInventoryId }

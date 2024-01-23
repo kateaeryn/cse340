@@ -204,6 +204,7 @@
     #detail-display img{
       max-width: 100%;
       margin: auto;
+      border-bottom: 10px solid #77cbb9;
     }
     #descriptionTag,
     #priceTag,
@@ -216,6 +217,14 @@
     }
     footer {
       margin-top: 5em;
+    }
+    .copyright{
+      margin-bottom: 0;
+      margin-left: 5px;
+    }
+    #errorLink{
+      margin-left: 10px;
+      margin-bottom: 5px;
     }
 
 @media screen and (min-width: 700px) {
