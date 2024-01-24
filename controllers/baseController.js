@@ -8,9 +8,9 @@ baseController.buildHome = async function(req, res){
 }
 
 //Intentional server error controller
-baseController.buildFooter = async function (req, res) {
-  const footer = await utilties.getFooter()
-  res.render("footer", {title: "Footer", footer})
-}
+//baseController.buildFooter = async function (req, res) {
+  //const footer = await utilties.getFooter()
+  //res.render("footer", {title: "Footer", footer})
+//}
 
 module.exports = baseController

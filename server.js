@@ -35,7 +35,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", utilities.handleErrors(inventoryRoute))
 
 //Intentional Server Error
-app.get("/footer", utilities.handleErrors(baseController.buildFooter))
+//app.get("/footer", utilities.handleErrors(baseController.buildFooter))
 
 
 // File Not Found Route - must be last route in list
