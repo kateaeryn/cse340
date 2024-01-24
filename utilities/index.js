@@ -58,7 +58,7 @@ Util.buildClassificationGrid = async function(data){
 }
 
 
-Util.buildDetailGrid = async function (data) {
+Util.buildDetailGrid = async function(data) {
   let grid = "" 
   if(data.length > 0){
     grid = '<div id="detail-display">'

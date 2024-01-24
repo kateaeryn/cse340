@@ -1,5 +1,4 @@
 const pool = require("../database/")
-const utilities = require("../utilities")
 
 /* ***************************
  *  Get all classification data
