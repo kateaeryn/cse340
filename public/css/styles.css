@@ -58,7 +58,26 @@
       z-index: 2;
       font-size: 1.95em;
     }
-  
+/* Flash messages*/
+  #messages .notice{
+    list-style-type: none;
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+    padding: .5em;
+    border: solid 3px red;
+    margin: 1em;
+  }
+  #messages .error{
+    list-style-type: none;
+      color: red;
+      font-size: 1.5em;
+      text-align: center;
+      padding: .5em;
+      border: solid 3px red;
+      margin: auto;
+  }
+  /*Main page, Delorean Info*/
     #delorean {
       display: block;
       margin: -8em auto auto auto;
@@ -173,6 +192,8 @@
       grid-column: 2/3;
       grid-row: 5/5;
     }
+
+    /*Inventory Display View*/
     ul#inv-display{
       list-style-type: none;
       padding: 0;
@@ -201,6 +222,8 @@
     #inv-display div span{
       margin-left: 10px;
     }
+
+    /*Car Detail View*/
     #detail-display img{
       max-width: 100%;
       margin: auto;
@@ -215,6 +238,46 @@
     #detail-display span{
       font-weight: 100;
     }
+/*Login form*/
+#login_form{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
+  gap: .5em;
+  border: solid grey 2px;
+  border-radius: 5px;
+  text-align: center;
+  padding: .5em;
+  background-color: #77cbb9;
+}
+#login_form button{
+  margin: auto;
+  font-size: 1.75em;
+  background-color: grey;
+  border-radius: 10px;
+  width: 50%;
+  padding: .25em;
+  font-weight: 500;
+}
+#login_form input{
+  align-self: right;
+  line-height: 3em;
+  border-radius: 5px;
+}
+#login_form label{
+  text-align: left;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+#login_form p{
+  font-size: 1.25em;
+  font-weight: 600;
+}
+#login_form p a{
+  color:black;
+}
+    /*Footer*/
     footer {
       margin-top: 5em;
     }
@@ -299,6 +362,14 @@
     font-size: 2.75em;
   }
 
+  /*Flash messagers*/
+#messages .notice, .error{
+  z-index: 3;
+  position: relative;
+  margin-bottom: 4em;
+}
+
+/*main page Delorean*/
   #delorean {
     display: block;
     margin: -20em auto auto auto;
@@ -429,6 +500,8 @@
     line-height: 2em;
     padding: 1em;
   }
+
+  /*Inventory Display View*/
 #inv-display{
   display: flex;
   flex-direction: row;
@@ -446,6 +519,8 @@
   height: 125px;
   width: 200px;
 }
+
+/*Car Detail View*/
 #detail-display {
 display: flex;
 }
@@ -460,6 +535,11 @@ display: flex;
 #detail-display h4{
   font-size: 1.25em;
 }
+/*loginform*/
+#login_form{
+  max-width: 50%;
+}
+/*Footer*/
   footer {
     margin-top: 5em;
   }

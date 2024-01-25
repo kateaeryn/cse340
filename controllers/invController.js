@@ -18,7 +18,9 @@ invCont.buildByClassificationId = async function (req, res, next) {
     grid,
   })
 }
-
+/***********************************
+ * Build Individual Detail View
+ * *****************************/
 invCont.buildDetailById = async function (req, res, next) {
   const inventory_id = req.params.inventoryId
   const data = await invModel.getDetailByInventoryId(inventory_id)

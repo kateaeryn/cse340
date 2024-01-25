@@ -24,7 +24,9 @@ async function getInventoryByClassificationId(classification_id) {
     console.error("getclassificationsbyid error " + error)
   }
 }
-
+/*************************************
+ * Get Details about selected vehicle
+ *************************************/
 async function getDetailByInventoryId(inventory_id) {
   try {
     const data = await pool.query(
