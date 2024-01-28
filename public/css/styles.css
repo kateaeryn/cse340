@@ -239,7 +239,7 @@
       font-weight: 100;
     }
 /*Login form*/
-#login_form{
+form{
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -251,7 +251,7 @@
   padding: .5em;
   background-color: #77cbb9;
 }
-#login_form button{
+form button{
   margin: auto;
   font-size: 1.75em;
   background-color: grey;
@@ -260,21 +260,22 @@
   padding: .25em;
   font-weight: 500;
 }
-#login_form input{
+form input{
   align-self: right;
-  line-height: 3em;
+  line-height: 1.5em;
   border-radius: 5px;
+  font-size: 1.5em;
 }
-#login_form label{
+form label{
   text-align: left;
   font-size: 1.5em;
   font-weight: bolder;
 }
-#login_form p{
+form p{
   font-size: 1.25em;
   font-weight: 600;
 }
-#login_form p a{
+form p a{
   color:black;
 }
     /*Footer*/
@@ -536,7 +537,7 @@ display: flex;
   font-size: 1.25em;
 }
 /*loginform*/
-#login_form{
+form{
   max-width: 50%;
 }
 /*Footer*/
