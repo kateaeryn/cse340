@@ -22,7 +22,7 @@
         <label for="account_password">Password: </label>
         <input id="account_password" type="password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
         <div id="showIt">
-        <input id="showPassword" type="checkbox" onclick="showPassword()">
+        <input id="showPassword" type="checkbox">
         <span><b>Show Password</b></span>
         </div>
         <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special
@@ -31,3 +31,14 @@
         <button type="submit" method="post">Register</button>
         
     </form>
+    <script>
+        document.querySelector("#showPassword").addEventListener("click", function (){
+            var s = document.getElementById("account_password");
+            if (s.type === "password") {
+                s.type = "text";
+            } else {
+                s.type = "password";
+            }
+        });
+        
+    </script>
