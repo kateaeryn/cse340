@@ -10,6 +10,7 @@ accCont.buildLogin = async function (req, res, next) {
   res.render("account/login", {
     title: "Login",
     nav,
+    errors: null,
   })
 }
 
@@ -21,6 +22,7 @@ accCont.buildRegister = async function (req, res, next) {
   res.render("account/register", {
     title: "Register",
     nav,
+    errors: null,
   })
 }
 
@@ -47,12 +49,14 @@ accCont.registerAccount = async function(req, res) {
     res.status(201).render("account/login", {
       title: "Login",
       nav,
+      errors: null,
     })
   } else {
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
+      errors: null,
     })
   }
 }

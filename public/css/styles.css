@@ -278,6 +278,24 @@ form p{
 form p a{
   color:black;
 }
+/*registration form*/
+input#showPassword {
+  
+  width: 30px;
+  height: 30px;
+  
+}
+form span{
+  text-align: left;
+  font-size: 1.25em;
+}
+#showIt{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+}
     /*Footer*/
     footer {
       margin-top: 5em;

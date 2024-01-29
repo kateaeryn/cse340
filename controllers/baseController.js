@@ -4,7 +4,7 @@ const baseController = {}
 //Base site controller for loading nav and menu
 baseController.buildHome = async function(req, res){
   const nav = await utilities.getNav()
-  res.render("index", {title: "Home", nav})
+  res.render("index", {title: "Home", nav, errors: null})
 }
 
 //Intentional server error controller
