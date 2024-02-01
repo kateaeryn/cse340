@@ -40,5 +40,30 @@ async function getDetailByInventoryId(inventory_id) {
   }
 }
 
+/**********************************
+ * Post new classification to database
+*************************************/
+async function addNewClassification(classification_name) {
+  try {
+    const sql = "INSERT INTO public.classification(classification_name) VALUES ($1);"
+    
+    return await pool.query(sql, [classification_name])
+  } catch (error) {
+    console.log(error.message)
+  }
+}
 
-module.exports = { getClassifications, getInventoryByClassificationId, getDetailByInventoryId }
+/**********************************
+ * Post new inventory to database
+*************************************/
+async function addNewInventory(inv_make, inv_model,inv_year,inv_description,inv_image,inv_thumbnail,inv_price,inv_miles,inv_color,classification_id) {
+  try {
+    const sql = "INSERT INTO public.inventory(inv_make, inv_model,inv_year,inv_description,inv_image,inv_thumbnail,inv_price,inv_miles,inv_color,classification_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);"
+    return await pool.query(sql, [inv_make, inv_model,inv_year,inv_description,inv_image,inv_thumbnail,inv_price,inv_miles,inv_color,classification_id])
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+
+module.exports = { getClassifications, getInventoryByClassificationId, getDetailByInventoryId, addNewClassification, addNewInventory }

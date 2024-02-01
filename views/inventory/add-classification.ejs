@@ -1,6 +1,8 @@
-<h1>
-    <%= title %>
-</h1>
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 
 <%- messages() %>
     <% if (errors) { %>
@@ -12,10 +14,9 @@
                 <% }) %>
         </ul>
         <% } %>
-           <form id="addClassification" method="submit" action="inv/add-classification">
-            
-            <label for="addClassfication">Classification Name</label>
+           <form id="addClassification" method="post" action="./add-classification">
+            <label for="classification_name" name="classification_name">Classification Name</label>
             <span>Name must be Alphabetic characters only</span>
-            <input type="text" id="classification_name">
-            <button type="submit">Add Classification</button>
+            <input type="text" name="classification_name" id="classification_name" required value="<%= locals.classification_name %>" pattern="^[A-Za-z]+$">
+            <button type="submit" >Add Classification</button>
            </form>

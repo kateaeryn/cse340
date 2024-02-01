@@ -91,6 +91,23 @@ Util.buildDetailGrid = async function(data) {
   }
   return grid
 }
+
+/********************************
+ * Build classification drop down menu
+ ***********************************/
+Util.buildDropDown = async function(req, res, next) {
+  let data = await invModel.getClassifications()
+  let list = '<select name="classification_id" id="classification_id" required selected="selected">'
+  list+= '<option value="">Select a Classification</option>'
+  data.rows.forEach((row) => {
+    list += '<option value="'+row.classification_id+'"  >' 
+    list += row.classification_name 
+    list += "</option>"
+  })
+  list += "</select>"
+  return list
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

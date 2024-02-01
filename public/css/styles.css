@@ -250,25 +250,26 @@ form{
   text-align: center;
   padding: .5em;
   background-color: #77cbb9;
+  
 }
 form button{
   margin: auto;
-  font-size: 1.75em;
+  font-size: 1.5em;
   background-color: grey;
   border-radius: 10px;
   width: 50%;
   padding: .25em;
   font-weight: 500;
 }
-form input{
-  align-self: right;
-  line-height: 1.5em;
+form input, textarea{
+  line-height: 1.25em;
   border-radius: 5px;
   font-size: 1.5em;
+  width: 90%;
 }
 form label{
   text-align: left;
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: bolder;
 }
 form p{
@@ -278,23 +279,50 @@ form p{
 form p a{
   color:black;
 }
+form input:required, textarea:required{
+  border-left: orange solid 20px;
+}
+ form input:required:valid, textarea:required:valid{
+  border-left: green solid 20px;
+}
+form select{
+  line-height: 1.25em;
+    border-radius: 5px;
+    font-size: 1.5em;
+    width: 95%;
+}
+form textarea{
+  border-radius: 5px;
+  border: solid grey 2px;
+ 
+}
 /*registration form*/
 input#showPassword {
-  
   width: 30px;
   height: 30px;
-  
 }
 form span{
   text-align: left;
   font-size: 1.25em;
 }
+
 #showIt{
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
   gap: 2px;
+}
+/*management view*/
+#managementLinks{
+  font-size: 1.75em;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 5%;
+  line-height: 1.25em;
+}
+#managementLinks a{
+  color: black;
 }
     /*Footer*/
     footer {

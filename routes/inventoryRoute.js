@@ -11,12 +11,18 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildDetailById));
 
 //route to build the management page
-router.get("/management", utilities.handleErrors(invController.buildManagementView))
+router.get("", utilities.handleErrors(invController.buildManagementView));
 
 //route to build the new classification page
-router.get("/inv/:add-classification", utilities.handleErrors(invController.buildNewClassification));
+router.get("/add-classification", utilities.handleErrors(invController.buildNewClassification));
+
+//route to add to the classification table
+router.post("/add-classification", utilities.handleErrors(invController.addClassification));
 
 //route to build new inventory page
-router.get("/inv/:add-inventory", utilities.handleErrors(invController.buildNewInventory));
+router.get("/add-inventory", utilities.handleErrors(invController.buildNewInventory));
+
+//route to add new inventory to database
+router.post("/add-inventory", utilities.handleErrors(invController.addInventory))
 
 module.exports = router;

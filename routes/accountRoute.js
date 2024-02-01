@@ -21,7 +21,6 @@ router.post("/register",
 router.post("/login", (req, res) => {
      regValidate.loginRules(),
          regValidate.checkLogData,
-         console.log("Did this")
     res.status(200).send('login process')
 })
 
