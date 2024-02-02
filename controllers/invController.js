@@ -63,7 +63,7 @@ invCont.buildNewClassification = async function (req, res, next) {
  * Add New Classification
  ****************************/
 invCont.addClassification = async function (req, res) {
-  let nav = utilities.getNav()
+  let nav = await utilities.getNav()
   const { classification_name } = req.body
   const regResult = await invModel.addNewClassification(classification_name) 
   if (regResult) {
@@ -102,7 +102,7 @@ invCont.buildNewInventory = async function (req, res, next) {
  * Add new Inventory to database
  *********************************/
 invCont.addInventory = async function (req, res) {
-  let nav = utilities.getNav()
+  let nav = await utilities.getNav()
   const list = await utilities.buildDropDown()
   const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
   const regResult = await invModel.addNewInventory(

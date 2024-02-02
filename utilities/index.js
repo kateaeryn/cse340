@@ -97,10 +97,10 @@ Util.buildDetailGrid = async function(data) {
  ***********************************/
 Util.buildDropDown = async function(req, res, next) {
   let data = await invModel.getClassifications()
-  let list = '<select name="classification_id" id="classification_id" required selected="selected">'
-  list+= '<option value="">Select a Classification</option>'
+  let list = '<select name="classification_id" id="classification_id" required>'
+  list += '<option value="">Select a Classification</option>'
   data.rows.forEach((row) => {
-    list += '<option value="'+row.classification_id+'"  >' 
+    list += '<option value="'+row.classification_id+'">' 
     list += row.classification_name 
     list += "</option>"
   })

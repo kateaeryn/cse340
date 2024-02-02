@@ -294,7 +294,7 @@ form select{
 form textarea{
   border-radius: 5px;
   border: solid grey 2px;
- 
+  
 }
 /*registration form*/
 input#showPassword {

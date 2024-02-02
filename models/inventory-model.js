@@ -53,6 +53,18 @@ async function addNewClassification(classification_name) {
   }
 }
 
+/*************************************
+ * Check for existsing classifications
+ *************************************/
+async function checkExistingClassification(classification_name) {
+  try {
+    const sql = "SELECT * FROM classification WHERE classification_name = $1"
+    const name = await pool.query(sql, [classification_name])
+    return name.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
 /**********************************
  * Post new inventory to database
 *************************************/
@@ -66,4 +78,4 @@ async function addNewInventory(inv_make, inv_model,inv_year,inv_description,inv_
 }
 
 
-module.exports = { getClassifications, getInventoryByClassificationId, getDetailByInventoryId, addNewClassification, addNewInventory }
+module.exports = { getClassifications, getInventoryByClassificationId, getDetailByInventoryId, checkExistingClassification,addNewClassification, addNewInventory }

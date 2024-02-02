@@ -3,7 +3,7 @@ const express = require("express")
 const router = new express.Router() 
 const accController = require("../controllers/accController")
 const utilities = require("../utilities")
-const regValidate = require('../utilities/account-validation')
+const regValidate = require("../utilities/account-validation")
 
 //Route to get Account Page
 router.get("/login", utilities.handleErrors(accController.buildLogin))
