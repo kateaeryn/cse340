@@ -294,7 +294,12 @@ form select{
 form textarea{
   border-radius: 5px;
   border: solid grey 2px;
-  
+}
+form select:required{
+  border-left: solid 20px orange;
+}
+form select:required:valid{
+  border-left: solid 20px green;
 }
 /*registration form*/
 input#showPassword {

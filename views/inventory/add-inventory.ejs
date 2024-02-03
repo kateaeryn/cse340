@@ -16,8 +16,8 @@
         <% } %>
             <form id="addInventory" method="post" action="./add-inventory">
                <label for="classification_id">Classifications</label> 
-               
-                    <%- list %>
+            <select name="classification_id" id="classification_id" required value="<%- locals.classification_id %>" >
+            <%- list %>
                
                <label for="inv_year">Year</label>
                <input type="text" id="inv_year" name="inv_year" required placeholder="4 digit year" pattern="\d+?" value="<%= locals.inv_year %>">
@@ -26,7 +26,7 @@
                <label for="inv_model">Model</label>
                 <input type="text" id="inv_model" name="inv_model" required placeholder="Min of 3 characters" pattern="^[A-Za-z]+$" value="<%= locals.inv_model %>">
                 <label for="inv_description">Description</label>
-                <textarea rows="5" cols="28" id="inv_description" name="inv_description" required></textarea>
+                <textarea rows="5" cols="28" id="inv_description" name="inv_description" required><%- locals.inv_description %></textarea>
                 <label for="inv_image">Full Image</label>
                 <input type="text" id="inv_image" name="inv_image" required value="/images/vehicles/no-image.png">
                 <label for="inv_thumbnail">Thumbnail Image</label>
