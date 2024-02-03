@@ -98,7 +98,7 @@ Util.buildDetailGrid = async function(data) {
 Util.buildDropDown = async function(selection) {
   let data = await invModel.getClassifications()
   let list 
-  list += '<option></option>'
+  list += '<option selected value="">Select A Classification</option>'
   data.rows.forEach((row) => {   
     if (selection == row.classification_id) {
       list += '<option></option>'
