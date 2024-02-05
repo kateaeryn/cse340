@@ -71,14 +71,13 @@ validate.checkRegData = async (req, res, next) => {
 
 /*************************************
  * Validate log in credentials
- *?********************************/
+ *********************************/
 validate.loginRules = () => {
   return [
     body("account_email")
-    .trim()
+     .trim()
     .isEmail()
-    .normalizeEmail() // refer to validator.js docs
-      .withMessage("A valid email is required."),
+    .normalizeEmail(), // refer to validator.js docs
     // password is required and must be strong password
     body("account_password")
       .trim()
@@ -89,7 +88,6 @@ validate.loginRules = () => {
         minNumbers: 1,
         minSymbols: 1,
       })
-      .withMessage("Password does not meet requirements."),
   ]
 }
 
@@ -107,7 +105,7 @@ validate.checkLogData = async (req, res, next) => {
       title: "Log In",
       nav,
       account_email,
-      account_password,
+      account_password
     })
     return
   }
