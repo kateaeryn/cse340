@@ -328,7 +328,36 @@ form span{
 }
 #managementLinks a{
   color: black;
+  font-size: .75em;
+ 
 }
+#classificationList{
+  line-height: 1em;
+    border-radius: 5px;
+    font-size: .75em;
+    width: 95%;
+    margin-bottom: 3%;
+}
+#managementLinks h2{
+  font-size: 1.25em;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1.25em;
+}
+#managementLinks p{
+  font-size: .75em;
+}
+#inventoryDisplay{
+  font-size: .75em;
+}
+table thead tr th{
+  font-size: 1.25em;
+}
+td {
+  padding-left: 6px;
+  padding-right: 5px;
+}
+
     /*Footer*/
     footer {
       margin-top: 5em;
@@ -590,6 +619,10 @@ display: flex;
 /*loginform*/
 form{
   max-width: 50%;
+}
+/*management view*/
+#classificationList{
+  width: 30%;
 }
 /*Footer*/
   footer {

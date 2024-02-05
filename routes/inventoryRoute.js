@@ -32,4 +32,7 @@ router.post("/add-inventory",
      regValidate.checkInvData,
     utilities.handleErrors(invController.addInventory))
 
+//route to fetch inventory list for managing
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+    
 module.exports = router;
