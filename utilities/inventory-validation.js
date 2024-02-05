@@ -143,7 +143,6 @@ validate.checkUpdateData = async (req, res, next) => {
         return
     }
     next()
-    console.log("made it here")
 }
 
 module.exports = validate

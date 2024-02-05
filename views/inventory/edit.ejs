@@ -14,7 +14,7 @@
                         <% }) %>
                 </ul>
                 <% } %>
-                    <form id="editInventory" method="post" action="/update">
+                    <form id="updateForm" method="post" action="/inv/update/">
                         <label for="classification_id">Classifications</label>
                         <select name="classification_id" id="classification_id" required
                             value="<%- locals.classification_id %>">
@@ -49,6 +49,7 @@
                                 <label for="inv_price">Price</label>
                                 <input type="text" id="inv_price" name="inv_price" required
                                     placeholder="digits or integers" pattern="\d+?" value="<%= locals.inv_price %>">
-                                <button type="submit" name="submit" value="Update Vehicle">Update Vehicle</button>
+                                <button type="submit" name="submit" disabled>Update Vehicle</button>
                                 <input type="hidden" name="inv_id" <% if(locals.inv_id) {%> value="<%= locals.inv_id %>" <%} %>>
                     </form>
+                    <script src="/js/inv_update.js"></script>

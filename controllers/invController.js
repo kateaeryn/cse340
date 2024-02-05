@@ -156,13 +156,13 @@ invCont.getInventoryJSON = async (req, res, next) => {
   * Modify inventory item
   ***********************************/
  invCont.modifyInventoryItem = async (req, res, next) => {
-   let nav = await utilities.getNav()
    const inv_id = parseInt(req.params.inv_id)
+   let nav = await utilities.getNav()
    const itemData = await invModel.getDetailByInventoryId(inv_id)
    const selection = parseInt(itemData[0].classification_id)
    const list = await utilities.buildDropDown(selection)
    const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
-  res.render("inventory/edit/", {
+  res.render("inventory/edit", {
     title: "Modify " + itemName,
     nav,
     list: list,
@@ -204,7 +204,7 @@ invCont.updateInventory = async function (req, res) {
     const itemName = updateResult.inv_make + " " + inv_model
     req.flash("notice",
       `The ${itemName} was successfully updated.`)
-    res.redirect("/")
+    res.redirect("/inv/")
   } else {
     const classificationSelect = await utilities.buildDropDown(classification_id)
     const itemName = `${inv_make} ${inv_model}`
