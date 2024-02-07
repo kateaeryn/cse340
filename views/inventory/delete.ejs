@@ -1,0 +1,36 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+
+        <%- messages() %>
+            <% if (errors) { %>
+                <ul class="notice">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+                <h3>Please confirm deletion of vehicle. This action is permanent.</h3>
+                    <form id="deleteForm" method="post" action="/inv/delete/">
+                                <label for="inv_year">Year</label>
+                                <input type="text" id="inv_year" name="inv_year" required placeholder="4 digit year"
+                                    pattern="\d+?" value="<%= locals.inv_year %>" readonly>
+                                <label for="inv_make">Make</label>
+                                <input type="text" id="inv_make" name="inv_make" required
+                                    placeholder="Min of 3 characters" pattern="^[A-Za-z]+$"
+                                    value="<%= locals.inv_make %>" readonly>
+                                <label for="inv_model">Model</label>
+                                <input type="text" id="inv_model" name="inv_model" required
+                                    placeholder="Min of 3 characters" pattern="^[A-Za-z]+$"
+                                    value="<%= locals.inv_model %>"readonly>
+                                <label for="inv_price">Price</label>
+                                <input type="text" id="inv_price" name="inv_price" required
+                                    placeholder="digits or integers" pattern="\d+?" value="<%= locals.inv_price %>" readonly>
+                                <button type="submit" name="submit">Delete Vehicle</button>
+                                <input type="hidden" name="inv_id" <% if(locals.inv_id) {%> value="<%= locals.inv_id %>" <%} %>>
+                    </form>
+                    
