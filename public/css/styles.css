@@ -357,7 +357,20 @@ td {
   padding-left: 6px;
   padding-right: 5px;
 }
-
+/*Account management*/
+#accountInformation{
+margin: .5em;
+}
+#accountInformation a{
+  color: black;
+}
+#changeInfo{
+  margin-bottom: 1em;
+}
+#changePassword h2{
+  margin: .25em;
+  text-align: left;
+}
     /*Footer*/
     footer {
       margin-top: 5em;

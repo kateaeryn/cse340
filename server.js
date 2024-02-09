@@ -44,6 +44,7 @@ app.set("layout", "./layouts/layout")
 
  // Express Messages Middleware
 app.use(require('connect-flash')())
+
 app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
@@ -65,7 +66,8 @@ app.use(utilities.checkJWTToken)
 app.use(utilities.handleErrors(static))
 
 //index route
-app.get("/", utilities.handleErrors(baseController.buildHome))
+app.get("/", 
+  utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", utilities.handleErrors(inventoryRoute))

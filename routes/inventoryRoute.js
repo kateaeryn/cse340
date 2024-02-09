@@ -11,16 +11,13 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 //Route to build detail page
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildDetailById));
 
-//router to get back to management view 
-// router.get("/inv/", utilities.handleErrors(invController.buildManagementView));
 
 //route to build the management page
-router.get("/", utilities.handleErrors(invController.buildManagementView));
-
+router.get("/", utilities.checkAccountType, utilities.handleErrors(invController.buildManagementView));
 
 
 //route to build the new classification page
-router.get("/add-classification", utilities.handleErrors(invController.buildNewClassification));
+router.get("/add-classification", utilities.checkAccountType, utilities.handleErrors(invController.buildNewClassification));
 
 //route to add to the classification table
 router.post("/add-classification",
@@ -29,7 +26,7 @@ router.post("/add-classification",
     utilities.handleErrors(invController.addClassification));
 
 //route to build new inventory page
-router.get("/add-inventory", utilities.handleErrors(invController.buildNewInventory));
+router.get("/add-inventory",  utilities.checkAccountType, utilities.handleErrors(invController.buildNewInventory));
 
 //route to add new inventory to database
 router.post("/add-inventory",
@@ -41,7 +38,7 @@ router.post("/add-inventory",
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 //route to edit inventory item
-router.get("/edit/:inv_id", utilities.handleErrors(invController.modifyInventoryItem))
+router.get("/edit/:inv_id",  utilities.checkAccountType, utilities.handleErrors(invController.modifyInventoryItem))
 
 //route to update inventory item
 router.post("/update/",
@@ -50,10 +47,10 @@ router.post("/update/",
     utilities.handleErrors(invController.updateInventory))
 
     //route to delete inventory item
-router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryItem)
+router.get("/delete/:inv_id", utilities.checkAccountType, utilities.handleErrors(invController.deleteInventoryItem)
 )
 //route to delete from database
-router.post("/delete/", utilities.handleErrors(invController.deleteInventory)
+router.post("/delete/",  utilities.checkAccountType, utilities.handleErrors(invController.deleteInventory)
 )
 
 module.exports = router;
