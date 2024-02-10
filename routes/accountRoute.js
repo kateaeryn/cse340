@@ -5,6 +5,9 @@ const accController = require("../controllers/accController")
 const utilities = require("../utilities")
 const regValidate = require("../utilities/account-validation")
 
+ 
+
+
 //route to the account management view
 router.get("/", utilities.checkLogin, utilities.handleErrors(accController.manageAccount))
 
@@ -32,17 +35,17 @@ router.post("/login",
     //route to update account information
 router.post("/update",   
     regValidate.updateRules(),
-    //regValidate.checkAccountData,
+    regValidate.checkAccountData,
      utilities.handleErrors(accController.updateAccInfo))
 
 //route to update account information
 router.post("/updatePassword",
-       //  regValidate.passwordRules(),
-         //regValidate.checkPassword,
+         regValidate.passwordRules(),
+         regValidate.checkPassword,
      utilities.handleErrors(accController.updatePassword))
     
- 
 //route to log out
-router.get("/", utilities.handleErrors(accController.logOut))
+router.post("/logout", 
+    utilities.handleErrors(accController.logOut))
 
 module.exports = router;

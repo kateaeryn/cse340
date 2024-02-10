@@ -29,7 +29,7 @@
     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
 <div id="showIt">
     <input id="showPassword" type="checkbox">
-    <span><b>Show Password</b></span>
+    <label for="showPassword"><span><b>Show Password</b></span></label>
     <button type="submit">Change Password</button>
     <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
 </div>

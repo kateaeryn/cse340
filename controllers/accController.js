@@ -163,12 +163,8 @@ accCont.updateAccInfo = async function (req, res, next) {
     if (before.account_email != accountData.account_email) {
       req.flash("notice", `Email: ${accountData.account_email} Updated`)
     } 
-   res.status(201).render("account/accManagement", {
-      title: "Account Management",
-      nav,
-      errors: null,
-    })
-    
+   res.redirect("/account/")
+
   } else {
     req.flash("notice", "Sorry, update failed.")
     res.status(501).render("account/update", {
@@ -226,14 +222,13 @@ accCont.updatePassword = async function (req, res, next) {
 /* ****************************************
 *  Deliver logout
 * *************************************** */
-accCont.logOut = async function (req, res, next) {
-  
-  req.session.destroy((err) => {
-     res.clearCookie("jwt").send("cleared cookie");//does not work
-  })
- 
-  return res.redirect("/")
-}
+accCont.logOut = async function (req, res) {
+  res.clearCookie("jwt")
+  res.locals.loggedin = 0
+  req.flash("You are logged out.")
+  res.redirect("/")
+        }
+      
 
 
 module.exports = accCont

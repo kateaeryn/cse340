@@ -33,7 +33,26 @@
    }
    #top-header #tools{
     margin-top: 1em;
+    display: flex;
+  gap: 0.5em;
    }
+
+     form#logoutForm {
+       display: flex;
+       background-color: white;
+       border: none;
+       margin: 0;
+       padding: 0;
+     }
+  
+     button#logout {
+       background-color: white;
+       border: none;
+       margin: 0;
+       padding: 0;
+       font-size: 1.1em;
+       
+     }
     nav ul {
       display: flex;
       flex-direction: row;
@@ -359,7 +378,7 @@ td {
 }
 /*Account management*/
 #accountInformation{
-margin: .5em;
+margin: .5em .5em .5em 1.75em;
 }
 #accountInformation a{
   color: black;
@@ -371,6 +390,7 @@ margin: .5em;
   margin: .25em;
   text-align: left;
 }
+
     /*Footer*/
     footer {
       margin-top: 5em;
@@ -636,6 +656,11 @@ form{
 /*management view*/
 #classificationList{
   width: 30%;
+}
+
+/*account management*/
+#accountInformation {
+  margin: .5em .5em .5em 5em;
 }
 /*Footer*/
   footer {
