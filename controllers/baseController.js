@@ -13,4 +13,5 @@ baseController.buildFooter = async function (req, res) {
   res.render("footer", {title: "Footer", footer})
 }
 
+
 module.exports = baseController

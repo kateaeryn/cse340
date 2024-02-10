@@ -131,17 +131,21 @@ validate.updateRules = () => {
 
     // valid email is required and cannot already exist in the DB
     body("account_email")
-    .trim()
-    .isEmail()
-    .normalizeEmail() // refer to validator.js docs
-    .withMessage("A valid email is required.")
-    .custom(async (account_email) => {
-      const emailExists = await accountModel.checkExistingEmail(account_email)
-      if (emailExists) {
-        console.log("email exists")
-        throw new Error("Email exists. Please log in or use a different email")
+      .trim()
+      .isEmail()
+      .normalizeEmail() // refer to validator.js docs
+      .withMessage("A valid email is required.")
+      .custom(async (account_email) => {
+        if (account_email != locals.accountData.account_email) { 
+          const emailExists = await accountModel.checkExistingEmail(account_email)
+            if (emailExists) {
+          console.log("email exists")
+              throw new Error("Email exists. Please log in or use a different email")
+            } 
+              
+        }
       }
-    })]
+    )]
 }
 
 /*  **********************************
@@ -187,9 +191,25 @@ validate.checkAccountData = async (req, res, next) => {
 }
 
 /* ******************************
- * Check data and return errors or continue to registration
+ * Check password
  * ***************************** */
-//
+validate.checkPassword = async (req, res, next) => {
+  const { account_password, account_id } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/update", {
+      errors,
+      title: "Update Account",
+      nav,
+      account_id,
+      account_password,
+    })
+    return
+  }
+  next()
+}
 
 
 module.exports = validate

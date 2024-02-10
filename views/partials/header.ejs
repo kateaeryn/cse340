@@ -4,9 +4,11 @@
     </span>
     <div id="tools">
         <% if(!locals.loggedin){ %>
-            <a title="Click to log in" href="/account/">My Account</a>
+            <a title="Click to log in" href="/account/login">My Account</a>
         <% }else{  
             const name = locals.accountData.account_firstname %>
-        <a title="Click to log out" href="/account/">Welcome <%- name %> </a><a href="/">Logout</a><%} %>
+        <a title="Click to access account" href="/account/">Welcome <%- name %> </a>
+        <a id="logout-link" title="click to log out" href="/">Logout</a><% } %>
+        
     </div>
 </header>

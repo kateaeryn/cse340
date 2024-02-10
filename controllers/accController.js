@@ -142,23 +142,33 @@ accCont.updateAccount = async function (req, res, next) {
 /*******************************
  * Update Account
  ****************************/
-accCont.updateAccInfo = async function (req, res) {
+accCont.updateAccInfo = async function (req, res, next) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_id } = req.body
-  const accData = await accountModel.getAccountById(account_id)
+  const before = await accountModel.getAccountById(account_id)
   const regResult = await accountModel.editAccountInfo(account_firstname, account_lastname, account_email, account_id) 
   if (regResult) {
+    const accountData = await accountModel.getAccountById(account_id)
+    const accessToken = jwt.sign(accountData , process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+    res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000, overwrite: true })
+    res.locals.accountData = accountData
     req.flash("notice",
-      "You have updated your information.")
-    res.status(201).render("account/accManagement", {
+      "You have updated your information.")    
+    if (before.account_firstname != accountData.account_firstname) {
+      req.flash("notice", `First Name: ${accountData.account_firstname} Updated`)
+    } 
+    if (before.account_lastname != accountData.account_lastname) {
+      req.flash("notice", `Last Name: ${accountData.account_lastname} Updated`)
+    } 
+    if (before.account_email != accountData.account_email) {
+      req.flash("notice", `Email: ${accountData.account_email} Updated`)
+    } 
+   res.status(201).render("account/accManagement", {
       title: "Account Management",
       nav,
       errors: null,
-      account_firstname: accData.account_firstname,
-      account_lastname: accData.account_lastname,
-      account_email: accData.account_email,
-      account_id,
-      })
+    })
+    
   } else {
     req.flash("notice", "Sorry, update failed.")
     res.status(501).render("account/update", {
@@ -167,12 +177,13 @@ accCont.updateAccInfo = async function (req, res) {
       errors: null,
     })
   }
+
 }
 
 /*******************************
  * Update Password
  ****************************/
-accCont.updatePassword = async function (req, res) {
+accCont.updatePassword = async function (req, res, next) {
   let nav = await utilities.getNav()
   const { account_password, account_id } = req.body
 // Hash the password before storing
@@ -189,8 +200,8 @@ accCont.updatePassword = async function (req, res) {
     })
   }
 
-  const regResult = await accountModel.changePassword(
-    hashedPassword
+  const regResult = await accountModel.changePassword(account_id,
+    hashedPassword 
   )
   if (regResult) {
     req.flash(
@@ -210,6 +221,18 @@ accCont.updatePassword = async function (req, res) {
       errors: null,
     })
   }
+}
+
+/* ****************************************
+*  Deliver logout
+* *************************************** */
+accCont.logOut = async function (req, res, next) {
+  
+  req.session.destroy((err) => {
+     res.clearCookie("jwt").send("cleared cookie");//does not work
+  })
+ 
+  return res.redirect("/")
 }
 
 

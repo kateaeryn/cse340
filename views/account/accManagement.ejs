@@ -9,11 +9,11 @@
 <div id="accountInformation">
 <% if(locals.accountData.account_type == "Client"){ %>
 <h2>Welcome <%- locals.accountData.account_firstname %> </h2> 
-<p><a href="./update">Update Account</a></p>
+<p><a href="../update">Update Account</a></p>
 <% } %>   
 <% if(locals.accountData.account_type=="Employee" || locals.accountData.account_type == "Admin" ){ %>
     <h2>Welcome <%- locals.accountData.account_firstname %> </h2>
-    <p><a href="./update">Update Account</a></p>
+    <p><a href="../update">Update Account</a></p>
     <h3>Inventory Management</h3>
     <p><a href="../inv/">Manage Inventory</a></p>
     <% } %>
