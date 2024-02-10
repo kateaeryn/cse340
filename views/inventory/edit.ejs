@@ -25,11 +25,11 @@
                                     pattern="\d+?" value="<%= locals.inv_year %>">
                                 <label for="inv_make">Make</label>
                                 <input type="text" id="inv_make" name="inv_make" required
-                                    placeholder="Min of 3 characters" pattern="^[A-Za-z]+$"
+                                    placeholder="Min of 3 characters" pattern="^[A-Za-z\s]+$"
                                     value="<%= locals.inv_make %>">
                                 <label for="inv_model">Model</label>
                                 <input type="text" id="inv_model" name="inv_model" required
-                                    placeholder="Min of 3 characters" pattern="^[A-Za-z]+$"
+                                    placeholder="Min of 3 characters" pattern="^[A-Za-z\s]+$"
                                     value="<%= locals.inv_model %>">
                                 <label for="inv_description">Description</label>
                                 <textarea rows="5" cols="28" id="inv_description" name="inv_description"
