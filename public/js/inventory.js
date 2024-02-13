@@ -44,3 +44,4 @@ function buildInventoryList(data) {
  inventoryDisplay.innerHTML = dataTable; 
 }
 
+

@@ -257,6 +257,13 @@
     #detail-display span{
       font-weight: 100;
     }
+    #reviewList p{
+     font-size: 1.5em;
+     border: solid #77cbb9 5px;
+     border-radius: 5px;
+     font-weight: bold;
+     text-align: center;
+    }
 /*Login form*/
 form{
   display: flex;
@@ -648,6 +655,27 @@ display: flex;
 }
 #detail-display h4{
   font-size: 1.25em;
+}
+ul p#loginRequest{
+  font-size: 1.25em;
+}
+#reviewList {
+  margin-left: 1em;
+}
+#reviewList p{
+  max-width: 50%;
+  
+}
+form#reviewForm{
+  margin: 1em;
+  text-align: left;
+  max-width: 60%;
+}
+form#reviewForm input#account_id{
+  max-width: 40%;
+}
+#loginRequest{
+  margin-left: 1.25em;
 }
 /*loginform*/
 form{

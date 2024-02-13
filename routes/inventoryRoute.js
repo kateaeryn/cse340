@@ -53,4 +53,8 @@ router.get("/delete/:inv_id", utilities.checkAccountType, utilities.handleErrors
 router.post("/delete/",  utilities.checkAccountType, utilities.handleErrors(invController.deleteInventory)
 )
 
+//route to log out
+router.post("/logout", 
+    utilities.handleErrors(invController.logOut))
+
 module.exports = router;

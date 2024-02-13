@@ -64,20 +64,20 @@ Util.buildClassificationGrid = async function(data){
 * ************************************ */
 Util.buildDetailGrid = async function(data) {
   let grid = "" 
-  if(data.length > 0){
+  if (data.length > 0) {
     grid = '<div id="detail-display">'
-    data.forEach(vehicle => { 
-      grid += '<img src="' + vehicle.inv_image 
-      +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
+    data.forEach(vehicle => {
+      grid += '<img src="' + vehicle.inv_image
+        + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
         + ' on CSE Motors" />'
       grid += '<div id="info">'
       grid += '<h2 id="vehicleName">' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h2>'
       grid += '<p id="descriptionTag"> Description: '
       grid += '<span id="description">' + vehicle.inv_description + '</span>'
       grid += '</p>'
-      grid += '<p id="priceTag"> Price: '  
-      grid += '<span id="price">$' 
-      + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
+      grid += '<p id="priceTag"> Price: '
+      grid += '<span id="price">$'
+        + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
       grid += '</p>'
       grid += '<p id="mileTag"> Mileage: '
       grid += '<span id="mileage">' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</span>'
@@ -92,6 +92,33 @@ Util.buildDetailGrid = async function(data) {
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
+}
+
+/* **************************************
+* Build the detail view HTML
+* ************************************ */
+Util.buildReviewGrid = async function (review) {
+  let list = ""
+  list += '<div id="reviewList">'
+  list += '<h2>Customer Reviews</h2>'
+  if (review.length > 0) {
+      
+  list += '<ul id="reviewList>'
+    review.forEach(byte => {
+        
+        list += '<li>'
+        list += '<p>'+ " wrote on " + byte.review_date + '</p>'
+        list += '</ hr>'
+        list += '<p' + byte.review_text + '</p>'
+        list += '</li>'
+      })
+    list += '</ul>'     
+    
+  } else {
+    list += '<p id=reviewThis" >Be the first to write a review</p>'
+  }
+  list += '</div>'
+  return list
 }
 
 /********************************

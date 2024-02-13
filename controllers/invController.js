@@ -1,6 +1,7 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
 
+
 const invCont = {}
 
 /* ***************************
@@ -25,13 +26,18 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildDetailById = async function (req, res, next) {
   const inventory_id = req.params.inventoryId
   const data = await invModel.getDetailByInventoryId(inventory_id)
+  const review = await invModel.getReviewByInventoryId(inventory_id)
+  const list = await utilities.buildReviewGrid(review)
+  console.log(list)
   const grid = await utilities.buildDetailGrid(data)
+  console.log(grid)
   let nav = await utilities.getNav()
   const className = data[0].inv_year + ' ' + data[0].inv_make + ' ' + data[0].inv_model
   res.render("inventory/detail", {
     title: className,
     nav,
     grid,
+    list,
     errors: null,
   })
 }
@@ -262,6 +268,14 @@ invCont.deleteInventory = async function (req, res) {
   }
 }
 
-
+/* ****************************************
+*  Deliver logout
+* *************************************** */
+invCont.logOut = async function (req, res) {
+  res.clearCookie("jwt")
+  res.locals.loggedin = 0
+  req.flash("You are logged out.")
+  res.redirect("/")
+        }
 
   module.exports = invCont
