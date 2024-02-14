@@ -57,4 +57,7 @@ router.post("/delete/",  utilities.checkAccountType, utilities.handleErrors(invC
 router.post("/logout", 
     utilities.handleErrors(invController.logOut))
 
+//route to post reviews
+router.post("/review", utilities.handleErrors(invController.submitReview))
+
 module.exports = router;

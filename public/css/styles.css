@@ -257,13 +257,30 @@
     #detail-display span{
       font-weight: 100;
     }
-    #reviewList p{
+    #reviewThis{
      font-size: 1.5em;
      border: solid #77cbb9 5px;
      border-radius: 5px;
      font-weight: bold;
      text-align: center;
     }
+        ul#reviewList {
+          list-style-type: none;
+          padding: 0;
+        }
+        #reviewList hr {
+          border: 2px solid #77cbb9;
+          margin-top: .5em;
+          margin-bottom: .5em;
+        }
+    
+        #reviewList {
+          line-height: .5em;
+        }
+    
+        #reviewList li {
+          padding:  .5em;
+        }
 /*Login form*/
 form{
   display: flex;
@@ -662,12 +679,12 @@ ul p#loginRequest{
 #reviewList {
   margin-left: 1em;
 }
-#reviewList p{
-  max-width: 50%;
-  
+#reviewThis{
+  max-width: 50%; 
+  margin-left: 1em;
 }
 form#reviewForm{
-  margin: 1em;
+  margin: 1em 1em 1em 1.5em;
   text-align: left;
   max-width: 60%;
 }
@@ -676,6 +693,9 @@ form#reviewForm input#account_id{
 }
 #loginRequest{
   margin-left: 1.25em;
+}
+#reviewHeader{
+  margin-left: 1em;
 }
 /*loginform*/
 form{

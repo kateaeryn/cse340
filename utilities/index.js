@@ -2,6 +2,7 @@ const invModel = require("../models/inventory-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
+const accModel = require("../models/account-model")
 
 /* ************************
  * Constructs the nav HTML unordered list
@@ -97,27 +98,24 @@ Util.buildDetailGrid = async function(data) {
 /* **************************************
 * Build the detail view HTML
 * ************************************ */
-Util.buildReviewGrid = async function (review) {
-  let list = ""
-  list += '<div id="reviewList">'
-  list += '<h2>Customer Reviews</h2>'
+Util.buildReviewGrid = async function(review) {
+  let list = ""  
   if (review.length > 0) {
-      
-  list += '<ul id="reviewList>'
-    review.forEach(byte => {
-        
-        list += '<li>'
-        list += '<p>'+ " wrote on " + byte.review_date + '</p>'
-        list += '</ hr>'
-        list += '<p' + byte.review_text + '</p>'
-        list += '</li>'
-      })
-    list += '</ul>'     
-    
+let account = await accModel.getAccountById(review[0].account_id)
+  const name = account.account_firstname.charAt(0) + account.account_lastname
+
+    list = '<ul id="reviewList">'
+    review.forEach(item => {
+      list += '<li>'
+      list += name + " wrote on " + item.review_date.toLocaleDateString('en-us', { month: 'long', day:'numeric', year: 'numeric'}) 
+      list += '<hr>'
+      list += item.review_text   
+      list += '</li>'
+    })
+    list += '</ul>' 
   } else {
-    list += '<p id=reviewThis" >Be the first to write a review</p>'
+    list += '<p id="reviewThis" >Be the first to write a review</p>'
   }
-  list += '</div>'
   return list
 }
 

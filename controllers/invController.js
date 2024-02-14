@@ -27,11 +27,9 @@ invCont.buildDetailById = async function (req, res, next) {
   const inventory_id = req.params.inventoryId
   const data = await invModel.getDetailByInventoryId(inventory_id)
   const review = await invModel.getReviewByInventoryId(inventory_id)
-  const list = await utilities.buildReviewGrid(review)
-  console.log(list)
-  const grid = await utilities.buildDetailGrid(data)
-  console.log(grid)
   let nav = await utilities.getNav()
+  let grid = await utilities.buildDetailGrid(data)
+  let list = await utilities.buildReviewGrid(review)
   const className = data[0].inv_year + ' ' + data[0].inv_make + ' ' + data[0].inv_model
   res.render("inventory/detail", {
     title: className,
@@ -39,6 +37,7 @@ invCont.buildDetailById = async function (req, res, next) {
     grid,
     list,
     errors: null,
+    inv_id: data[0].inv_id,
   })
 }
 
@@ -277,5 +276,33 @@ invCont.logOut = async function (req, res) {
   req.flash("You are logged out.")
   res.redirect("/")
         }
+
+
+/*******************************
+ * Add New review
+ ****************************/
+invCont.submitReview = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { account_id, inv_id, review_text } = req.body
+  const inventory_id = req.params.inventoryId
+  const data = await invModel.getDetailByInventoryId(inventory_id)
+  const regResult = await invModel.addNewReview(account_id, inv_id, review_text) 
+  const className = data[0].inv_year + ' ' + data[0].inv_make + ' ' + data[0].inv_model
+  if (regResult) {
+    res.redirect("detail/")
+  } else {
+    req.flash("notice", "Sorry, the addition failed.")
+    res.status(501).render("inventory/detail", {
+      title: className,
+    nav,
+    grid,
+    list,
+    inv_id: data[0].inv_id,
+    errors: null,
+    })
+  }
+}
+
+
 
   module.exports = invCont
