@@ -108,9 +108,6 @@ async function deleteInventory(inv_id) {
  * Post new review to database
 *************************************/
 async function addNewReview(account_id, inv_id, review_text) {
-  console.log(account_id)
-  console.log(inv_id)
-  console.log(review_text)
   try {
     const sql = "INSERT INTO public.review(account_id, inv_id, review_text) VALUES ($1,$2,$3);"
     return await pool.query(sql, [account_id, inv_id, review_text])

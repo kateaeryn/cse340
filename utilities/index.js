@@ -101,11 +101,12 @@ Util.buildDetailGrid = async function(data) {
 Util.buildReviewGrid = async function(review) {
   let list = ""  
   if (review.length > 0) {
-let account = await accModel.getAccountById(review[0].account_id)
-  const name = account.account_firstname.charAt(0) + account.account_lastname
-
+    let account = await accModel.getAccountById(review[0].account_id)
+    const name = account.account_firstname.charAt(0) + account.account_lastname
+    const sorted = review.sort((a, b) => b.review_date - a.review_date) 
+    console.log(sorted)
     list = '<ul id="reviewList">'
-    review.forEach(item => {
+    sorted.forEach(item => {
       list += '<li>'
       list += name + " wrote on " + item.review_date.toLocaleDateString('en-us', { month: 'long', day:'numeric', year: 'numeric'}) 
       list += '<hr>'
