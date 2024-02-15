@@ -414,7 +414,19 @@ margin: .5em .5em .5em 1.75em;
   margin: .25em;
   text-align: left;
 }
+#reviewTable {
+  counter-reset: rowNumber;
+}
 
+#reviewTable tr {
+  counter-increment: rowNumber;
+}
+
+#reviewTable tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+  margin-right: 0.5em;
+}
     /*Footer*/
     footer {
       margin-top: 5em;
@@ -710,19 +722,7 @@ form{
 #accountInformation {
   margin: .5em .5em .5em 5em;
 }
-#reviewTable{
-      counter-reset: rowNumber;
-    }
-  
-#reviewTable tr {
-      counter-increment: rowNumber;
-    }
-  
-#reviewTable tr td:first-child::before {
-      content: counter(rowNumber);
-      min-width: 1em;
-      margin-right: 0.5em;
-    }
+
 
 /*Footer*/
   footer {

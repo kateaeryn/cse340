@@ -1,6 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
-
+const revModel = require("../models/review-model")
 
 const invCont = {}
 
@@ -26,7 +26,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildDetailById = async function (req, res, next) {
   const inventory_id = req.params.inventoryId
   const data = await invModel.getDetailByInventoryId(inventory_id)
-  const review = await invModel.getReviewByInventoryId(inventory_id)
+  const review = await revModel.getReviewByInventoryId(inventory_id)
   let nav = await utilities.getNav()
   let grid = await utilities.buildDetailGrid(data)
   let list = await utilities.buildReviewGrid(review)
@@ -154,7 +154,7 @@ invCont.getInventoryJSON = async (req, res, next) => {
 }
 
  /************************************
-  * Modify inventory item
+  * build Modify inventory item view
   ***********************************/
  invCont.modifyInventoryItem = async (req, res, next) => {
    const inv_id = parseInt(req.params.inv_id)
@@ -276,43 +276,6 @@ invCont.logOut = async function (req, res) {
   req.flash("You are logged out.")
   res.redirect("/")
         }
-
-
-/*******************************
- * Add New review
- ****************************/
-invCont.submitReview = async function (req, res) {
-  let nav = await utilities.getNav()
-  const { account_id, inv_id, review_text } = req.body
-  const inventory_id = inv_id
-  const review = await invModel.getReviewByInventoryId(inventory_id)
-  const data = await invModel.getDetailByInventoryId(inventory_id)
-  let grid = await utilities.buildDetailGrid(data)
-  let list = await utilities.buildReviewGrid(review)
-  const regResult = await invModel.addNewReview(account_id, inv_id, review_text) 
-  const className = data[0].inv_year + ' ' + data[0].inv_make + ' ' + data[0].inv_model
-  if (regResult) {
-    res.status(201).render("inventory/detail", {
-    title: className,
-      nav,
-      grid,
-    list,
-    inv_id: data[0].inv_id,
-    errors: null,
-    })
-  } else {
-    req.flash("notice", "Sorry, the addition failed.")
-    res.status(501).render("inventory/detail", {
-      title: className,
-    nav,
-    grid,
-    list,
-    inv_id: data[0].inv_id,
-    errors: null,
-    })
-  }
-}
-
 
 
   module.exports = invCont

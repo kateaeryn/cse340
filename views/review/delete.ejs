@@ -15,12 +15,12 @@
                 </ul>
                 <% } %>
                     <h3>Please confirm deletion of review. This action is permanent.</h3>
-                    <form id="deleteReviewForm" method="post" action="/account/delete/">
+                    <form id="deleteReviewForm" method="post" action="../delete/">
                         <label for="review_date">Date of Review</label>
-                        <input type="date" id="review_date" name="review_date" readonly value="<%= %>">
+                        <input type="text" id="review_date" name="review_date" readonly value="<%= locals.review_date %>">
                         
                         <label for="review_text">Review:</label>
-                        <input type="text" id="review_text" name="review_text" required pattern="^[A-Za-z]+$" value="<%= locals.review_text %>" >
+                        <input type="text" id="review_text" name="review_text" required pattern=".*" value="<%= locals.review_text %>" >
                         
                         <button type="submit" name="submit">Delete Review</button>
                         <input type="hidden" name="inv_id" <% if(locals.inv_id) {%> value="<%= locals.inv_id %>" <%} %>>

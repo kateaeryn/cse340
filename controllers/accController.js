@@ -1,10 +1,10 @@
 const utilities = require("../utilities/")
-const accountModel = require("../models/account-model")
+const accModel = require("../models/account-model")
 const accCont = {}
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
-const reviewModel = require("../models/review-model")
+const revModel = require("../models/review-model")
 
 /* ****************************************
 *  Deliver login view
@@ -52,7 +52,7 @@ accCont.registerAccount = async function(req, res) {
     })
   }
 
-  const regResult = await accountModel.registerAccount(
+  const regResult = await accModel.registerAccount(
     account_firstname,
     account_lastname,
     account_email,
@@ -84,7 +84,7 @@ accCont.registerAccount = async function(req, res) {
 accCont.accountLogin = async function(req, res) {
  let nav = await utilities.getNav()
   const { account_email, account_password } = req.body
-  const accountData = await accountModel.getAccountByEmail(account_email)
+  const accountData = await accModel.getAccountByEmail(account_email)
   if (!accountData) {
   req.flash("notice", "Please check your credentials and try again.")
   res.status(400).render("account/login", {
@@ -121,9 +121,9 @@ accCont.accountLogin = async function(req, res) {
 * *************************************** */
 accCont.manageAccount = async function (req, res, next) {
   let nav = await utilities.getNav()
-  let review = await reviewModel.getReviewById(res.locals.accountData.account_id)
-  console.log(review)
-  let dataTable = await utilities.buildReviewList( review)
+  let review = await revModel.getReviewByAccountId(res.locals.accountData.account_id)
+  let dataTable = await utilities.buildReviewList(review)
+  
   res.render("account/accManagement", {
     title: "My Account",
     nav,
@@ -150,10 +150,10 @@ accCont.updateAccount = async function (req, res, next) {
 accCont.updateAccInfo = async function (req, res, next) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_id } = req.body
-  const before = await accountModel.getAccountById(account_id)
-  const regResult = await accountModel.editAccountInfo(account_firstname, account_lastname, account_email, account_id) 
+  const before = await accModel.getAccountById(account_id)
+  const regResult = await accModel.editAccountInfo(account_firstname, account_lastname, account_email, account_id) 
   if (regResult) {
-    const accountData = await accountModel.getAccountById(account_id)
+    const accountData = await accModel.getAccountById(account_id)
     const accessToken = jwt.sign(accountData , process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
     res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000, overwrite: true })
     res.locals.accountData = accountData
@@ -201,7 +201,7 @@ accCont.updatePassword = async function (req, res, next) {
     })
   }
 
-  const regResult = await accountModel.changePassword(account_id,
+  const regResult = await accModel.changePassword(account_id,
     hashedPassword 
   )
   if (regResult) {

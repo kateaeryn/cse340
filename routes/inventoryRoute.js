@@ -2,6 +2,7 @@
 const express = require("express")
 const router = new express.Router() 
 const invController = require("../controllers/invController")
+const revController = require("../controllers/revController")
 const utilities = require("../utilities/")
 const regValidate = require("../utilities/inventory-validation")
 
@@ -46,7 +47,7 @@ router.post("/update/",
     regValidate.checkUpdateData,
     utilities.handleErrors(invController.updateInventory))
 
-    //route to delete inventory item
+    //route to delete inventory item view
 router.get("/delete/:inv_id", utilities.checkAccountType, utilities.handleErrors(invController.deleteInventoryItem)
 )
 //route to delete from database
@@ -58,6 +59,8 @@ router.post("/logout",
     utilities.handleErrors(invController.logOut))
 
 //route to post reviews
-router.post("/review", utilities.handleErrors(invController.submitReview))
+router.post("/review", 
+    utilities.handleErrors(revController.submitReview))
+
 
 module.exports = router;

@@ -125,14 +125,13 @@ Util.buildReviewGrid = async function(review) {
 Util.buildReviewList = async function(review) { 
   // Set up the table labels 
   let dataTable = '<thead>'; 
-  console.log( review);
   if (review.length > 0){
-    
+    const sorted = review.sort((a, b) => b.review_date - a.review_date) 
  dataTable += '</thead>'; 
  // Set up the table body 
  dataTable += '<tbody>'; 
  // Iterate over all reviews in the array list them
-    review.forEach(function (element) { 
+    sorted.forEach(function (element) { 
     
   dataTable += `<tr><td>Reviewed the ${element.inv_year} ${element.inv_make} ${element.inv_model} on ${element.review_date.toLocaleDateString('en-us', { month: 'long', day:'numeric', year: 'numeric'})}</td>`; 
   dataTable += `<td><a href='/review/edit/${element.review_id}' title='Click to update'>Edit</a></td>`; 

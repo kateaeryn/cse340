@@ -13,14 +13,15 @@
                         </li>
                         <% }) %>
                 </ul>
-                <% } 
-                const date = locals.review_date.toLocaleDateString('en-us', { month: 'long', day:'numeric', year: 'numeric'}) %>
-                    <form id="updateReviewForm" method="post" action="/edit">
+                <% } %>
+               <%# const date = locals.review_date.toLocaleDateString('en-us', { month: 'long', day:'numeric', year: 'numeric'}) 
+               %>
+                    <form id="updateReviewForm" method="post" action="../edit">
                         <label for="review_date">Date of Review</label>
-                        <input type="text" id="review_date" name="review_date" readonly value="<%- date %>">
+                        <input type="text" id="review_date" name="review_date" readonly value="<%- locals.review_date %>">
                               
                         <label for="review_text">Review:</label>
-                        <input type="text" id="review_text" name="review_text" required pattern="^[A-Za-z\s]+$" value="<%= locals.review_text %>">
+                        <input type="text" id="review_text" name="review_text" required  pattern=".*" value="<%= locals.review_text %>">
                                
                         <button type="submit" name="submit">Edit Review</button>
                         <input type="hidden" name="inv_id" <% if(locals.inv_id) {%> value="<%= locals.inv_id %>" <%} %>>

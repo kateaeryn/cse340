@@ -104,37 +104,10 @@ async function deleteInventory(inv_id) {
   }
 }
 
-/**********************************
- * Post new review to database
-*************************************/
-async function addNewReview(account_id, inv_id, review_text) {
-  try {
-    const sql = "INSERT INTO public.review(account_id, inv_id, review_text) VALUES ($1,$2,$3);"
-    return await pool.query(sql, [account_id, inv_id, review_text])
-  } catch (error) {
-    console.log(error.message)
-  }
-}
-
-/*************************************
- * Get reviews about selected vehicle
- *************************************/
-async function getReviewByInventoryId(inventory_id) {
-  try {
-    const data = await pool.query(
-      `SELECT * FROM public.review AS i
-      WHERE i.inv_id = $1`,
-      [inventory_id]
-    )
-    return data.rows
-  } catch (error) {
-    console.error("getdetailbyinventoryid error" + error)
-  }
-}
 
 
 
 module.exports = {
   getClassifications, getInventoryByClassificationId, getDetailByInventoryId, checkExistingClassification,
-  addNewClassification, addNewInventory, updateInventory, deleteInventory, addNewReview, getReviewByInventoryId,
+  addNewClassification, addNewInventory, updateInventory, deleteInventory
 }

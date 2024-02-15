@@ -49,5 +49,4 @@ router.post("/logout",
     utilities.handleErrors(accController.logOut))
 
 
-
 module.exports = router;
