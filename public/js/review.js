@@ -1,7 +1,11 @@
 
+const data = accModel.getReviewById(accountId);
+buildReviewList(data);
+
+
  // Build inventory items into HTML table components and inject into DOM 
 function buildReviewList(data) { 
- let reviewDisplay = document.getElementById("reviewDisplay"); 
+ let reviewTable = document.getElementById("reviewTable"); 
     // Set up the table labels 
  let dataTable = '<thead>'; 
  dataTable += '<tr><th>Customer Reviews</th><td>&nbsp;</td><td>&nbsp;</td></tr>'; 
@@ -17,5 +21,5 @@ function buildReviewList(data) {
  }) 
  dataTable += '</tbody>'; 
  // Display the contents in the Inventory Management view 
- reviewDisplay.innerHTML = dataTable; 
+ reviewTable.innerHTML = dataTable; 
 }

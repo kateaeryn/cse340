@@ -48,4 +48,6 @@ router.post("/updatePassword",
 router.post("/logout", 
     utilities.handleErrors(accController.logOut))
 
+
+
 module.exports = router;

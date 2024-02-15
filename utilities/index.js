@@ -120,6 +120,35 @@ Util.buildReviewGrid = async function(review) {
   return list
 }
 
+
+// Build inventory items into HTML table components and inject into DOM 
+Util.buildReviewList = async function(review) { 
+  // Set up the table labels 
+  let dataTable = '<thead>'; 
+  console.log( review);
+  if (review.length > 0){
+    
+ dataTable += '</thead>'; 
+ // Set up the table body 
+ dataTable += '<tbody>'; 
+ // Iterate over all reviews in the array list them
+    review.forEach(function (element) { 
+    
+  dataTable += `<tr><td>Reviewed the ${element.inv_year} ${element.inv_make} ${element.inv_model} on ${element.review_date.toLocaleDateString('en-us', { month: 'long', day:'numeric', year: 'numeric'})}</td>`; 
+  dataTable += `<td><a href='/account/edit/${element.review_id}' title='Click to update'>Edit</a></td>`; 
+  dataTable += `<td><a href='/account/delete/${element.review_id}' title='Click to delete'>Delete</a></td></tr>`; 
+ }) 
+
+dataTable += '</tbody>'; 
+  } else {
+    dataTable += '<p>You have no reviews</p>'
+  }
+ return dataTable
+ 
+
+}
+
+
 /********************************
  * Build classification drop down menu
  ***********************************/
