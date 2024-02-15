@@ -135,8 +135,8 @@ Util.buildReviewList = async function(review) {
     review.forEach(function (element) { 
     
   dataTable += `<tr><td>Reviewed the ${element.inv_year} ${element.inv_make} ${element.inv_model} on ${element.review_date.toLocaleDateString('en-us', { month: 'long', day:'numeric', year: 'numeric'})}</td>`; 
-  dataTable += `<td><a href='/account/edit/${element.review_id}' title='Click to update'>Edit</a></td>`; 
-  dataTable += `<td><a href='/account/delete/${element.review_id}' title='Click to delete'>Delete</a></td></tr>`; 
+  dataTable += `<td><a href='/review/edit/${element.review_id}' title='Click to update'>Edit</a></td>`; 
+  dataTable += `<td><a href='/review/delete/${element.review_id}' title='Click to delete'>Delete</a></td></tr>`; 
  }) 
 
 dataTable += '</tbody>'; 

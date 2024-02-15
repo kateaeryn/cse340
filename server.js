@@ -18,7 +18,7 @@ const pool = require("./database/")
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
-
+const reviewRoute = require("./routes/reviewRoute")
 
 /* ***********************
  * View Engine and Templates
@@ -74,6 +74,9 @@ app.use("/inv", utilities.handleErrors(inventoryRoute))
 
 //Account Route
 app.use("/account", utilities.handleErrors(accountRoute))
+
+//review Route
+app.use("/review", utilities.handleErrors(reviewRoute))
 
 //Intentional Server Error
 app.get("/footer", utilities.handleErrors(baseController.buildFooter))

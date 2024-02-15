@@ -11,6 +11,6 @@ const regValidate = require("../utilities/account-validation")
 
 
 //route to edit reviews
-router.get("/edit:reviewId", utilities.handleErrors(revController.buildReviewEdit))
+router.get("/edit/:reviewId", utilities.handleErrors(revController.buildReviewEdit));
 
 module.exports = router

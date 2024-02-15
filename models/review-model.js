@@ -18,4 +18,19 @@ async function getReviewById(account_id) {
   }
 }
 
-module.exports = {getReviewById}
+/* *****************************
+* Return review data for editing
+* ***************************** */
+async function getReviewData(review_id) {
+  try {
+    const result = await pool.query(
+      'SELECT review_id, review_date, review_text, inv_id, account_id FROM public.review WHERE public.review.review_id = $1',
+      [review_id])
+   
+    return result.rows
+  } catch (error) {
+    return new Error(error)
+  }
+}
+
+module.exports = {getReviewById, getReviewData}
