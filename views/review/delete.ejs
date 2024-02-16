@@ -14,7 +14,7 @@
                         <% }) %>
                 </ul>
                 <% } %>
-                    <h3>Please confirm deletion of review. This action is permanent.</h3>
+                    <h2>Please confirm deletion of review. This action is permanent.</h2>
                     <form id="deleteReviewForm" method="post" action="../delete/">
                         <label for="review_date">Date of Review</label>
                         <input type="text" id="review_date" name="review_date" readonly value="<%= locals.review_date %>">

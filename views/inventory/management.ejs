@@ -19,7 +19,7 @@
         <a href="./add-inventory">Add New Inventory</a>
        
         <h2>Modify Inventory</h2>
-        <p>Select a classification from the list to see the inventory items in that category.</p>
+        <label for="classification_id">Select a classification from the list to see the inventory items in that category.</label>
         <select name="classification_id" id="classificationList" required value="<%- locals.classification_id %>">
         <%- list %>
         <table id="inventoryDisplay" > 
